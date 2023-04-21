@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Ask Page";
+    @* <link rel="stylesheet" href="~/css/Ask.css" asp-append-version="true" />*@
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+}
+ร้าน : @ViewData["FoodShopName"] </br>
+user : @User.Identity.Name;
+<div class="d-flex align-items-center justify-content-around flex-wrap">
+    <div class="card mb-3 mx-3" style="width: 18rem;background-color: #C6451D;">
+        <img class="card-img-top" src="https://menhouse.net/img/ib/34lGi6YD5X.png" alt="Card image cap">
+        <div class="card-body text-center">
+            <h5 class="card-title" style="color:white;">คุณต้องการที่จะ...</h5>
+@*            <a class="btn btn-warning" asp-area="" asp-controller="Home" asp-action="Rider">เป็นผู้ซื้อ</a>*@
+            <a href="BuiltOrder?FoodShopName=@ViewData["FoodShopName"]" class="btn btn-warning">เป็นผู้ซื้อ</a>
+</div>
+    </div>
+    <div class="card mb-3 mx-3" style="width: 18rem;background-color: #C6451D;">
+        <img class="card-img-top" src="https://menhouse.net/img/ib/ZYFre9WGLc.jpg" alt="Card image cap">
+        <div class="card-body text-center">
+            <h5 class="card-title" style="color:white;">คุณต้องการที่จะ...</h5>
+            <a class="btn btn-warning" asp-area="" asp-controller="Home" asp-action="User">เป็นผู้ฝาก</a>
+        </div>
+    </div>
+</div>
+
