@@ -1,13 +1,28 @@
-﻿@model IEnumerable<WEB_APP_PROJECT.Models.FoodCourt>;
-
+﻿@model IEnumerable<WEB_APP_PROJECT.Models.Order>;
 
 
 @{
     ViewData["Title"] = "Start Pages";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>It Works I Yed Mae.</p>
-<p>@User.Identity.Name</p>
-<p>Selected shop: @Model</p>
+
+<div class="w-100 d-flex flex-wrap">
+@foreach(Order tmp in Model)
+{
+    <div class="card mb-3 mx-3" style="width:32rem;">
+        <div class="card-body">
+                <h4 class="card-title"> ร้าน : @ViewData["FoodShopName"]</h4>
+            <p class="card-text">
+                    ลูกค้า : @tmp.userName<br>
+                เบอร์ลูกค้า : @tmp.callUser<br>
+                เมนู : @tmp.menu              <br>
+                จำนวน : @tmp.amount<br>
+            </p>
+                <a href="AcceptOrder?Orderid=@tmp.OrderId" class="btn btn-warning">เป็นผู้ฝาก</a>
+            @*<a href="#" class="btn " style="background-color:#442819; color:white;">ยืนยันรับซื้อ</a>*@
+        </div>
+    </div>
+}
+</div>
+
 

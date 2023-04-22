@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WEB_APP_PROJECT.Data;
 using WEB_APP_PROJECT.Models;
@@ -55,11 +56,11 @@ namespace WEB_APP_PROJECT.Controllers
             return RedirectToAction("Index");
         }
 
-        //public IActionResult Order()
-        //{
-        //    var orderList = _db.Orders.Where(c => c.riderName == User.Identity.Name || c.userName == User.Identity.Name).ToList();
-        //    return View(orderList);
-        //}
+        public IActionResult Order()
+        {
+            var orderList = _db.Orders.Where(c =>  c.riderName == @User.Identity.Name).ToList();
+            return View(orderList);
+        }
 
 
         public IActionResult Privacy()
@@ -77,10 +78,29 @@ namespace WEB_APP_PROJECT.Controllers
             return Redirect("~/Identity/Account/Login");
         }
 
-        public IActionResult ChoosePage()
+        public IActionResult ChoosePage(String FoodShopName)
         {
+            var orderList = _db.Orders.Where(c => c.FoodShopName== FoodShopName && c.status=="wait").ToList();
+            ViewData["FoodShopName"] = FoodShopName;
 
-            return View();
+            return View(orderList);
+        }
+
+        public IActionResult AcceptOrder(int Orderid)
+        {
+            var order = _db.Orders.Find(Orderid);
+            if (order != null)
+            {
+                order.status = "in process";
+                order.riderName = @User.Identity.Name;
+                _db.Orders.Update(order);
+                _db.SaveChanges();
+                return RedirectToAction("Order");
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

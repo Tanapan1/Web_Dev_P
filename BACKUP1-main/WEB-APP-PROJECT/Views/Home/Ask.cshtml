@@ -12,14 +12,15 @@ user : @User.Identity.Name;
         <div class="card-body text-center">
             <h5 class="card-title" style="color:white;">คุณต้องการที่จะ...</h5>
 @*            <a class="btn btn-warning" asp-area="" asp-controller="Home" asp-action="Rider">เป็นผู้ซื้อ</a>*@
-            <a href="BuiltOrder?FoodShopName=@ViewData["FoodShopName"]" class="btn btn-warning">เป็นผู้ซื้อ</a>
+            <a href="ChoosePage?FoodShopName=@ViewData["FoodShopName"]" class="btn btn-warning">เป็นผู้ฝาก</a>
 </div>
     </div>
     <div class="card mb-3 mx-3" style="width: 18rem;background-color: #C6451D;">
         <img class="card-img-top" src="https://menhouse.net/img/ib/ZYFre9WGLc.jpg" alt="Card image cap">
         <div class="card-body text-center">
             <h5 class="card-title" style="color:white;">คุณต้องการที่จะ...</h5>
-            <a class="btn btn-warning" asp-area="" asp-controller="Home" asp-action="User">เป็นผู้ฝาก</a>
+    
+            <a href="BuiltOrder?FoodShopName=@ViewData["FoodShopName"]" class="btn btn-warning">เป็นผู้ฝาก</a>
         </div>
     </div>
 </div>

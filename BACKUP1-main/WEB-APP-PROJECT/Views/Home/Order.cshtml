@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WEB_APP_PROJECT.Models.Order>;
+@{
+    ViewData["Title"] = "Order";
+}
+
+
+
+<div class="w-100 d-flex flex-wrap justify-content-center">
+
+    @foreach (var tmp in Model)
+    {
+        <div class="card mb-3 mx-3" style="width:16rem;">
+            <div class="card-body">
+                <h4 class="card-title"> @tmp.FoodShopName</h4>
+                <p class="card-text">
+                    ลูกค้า : @tmp.userName
+                    เบอร์ลูกค้า : @tmp.callUser <br>
+                    เบอร์Rider : @tmp.callRider<br>
+                    เมนู : @tmp.menu<br>
+                    จำนวน : @tmp.amount<br>
+                </p>
+                <a href="#" class="btn btn-success">ยืนยันการรับ</a>
+            </div>
+        </div>
+    }
+</div>
+
